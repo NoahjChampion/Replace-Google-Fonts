@@ -6,16 +6,16 @@
  * Description: Use Qihoo 360 Open Fonts Service to replace Google's.
  * Author:      soulteary
  * Author URI:  http://www.soulteary.com/
- * Version:     1.0
- * License:     GPL
+ * Version:     1.1
+ * License:     GPL2+
  */
 
 /**
  * Silence is golden
  */
-if (!defined('ABSPATH')) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Replace_Google_Fonts
+class st_Replace_Google_Fonts
 {
 
     /**
@@ -24,7 +24,7 @@ class Replace_Google_Fonts
      */
     public function __construct()
     {
-        add_filter('style_loader_tag', array($this, 'ohMyFont'), 1000, 1);
+        add_filter( 'style_loader_tag', array( $this, 'st_switch_font' ), 1000, 1 );
     }
 
 
@@ -34,13 +34,13 @@ class Replace_Google_Fonts
      * @param $text
      * @return mixed
      */
-    public function ohMyFont($text)
+    public function st_switch_font( $text )
     {
-        return str_replace('//fonts.googleapis.com/', '//fonts.useso.com/', $text);
+        return str_replace( '//fonts.googleapis.com/', '//fonts.useso.com/', $text );
     }
 }
 
 /**
  * bootstrap
  */
-new Replace_Google_Fonts;
+new st_Replace_Google_Fonts;
